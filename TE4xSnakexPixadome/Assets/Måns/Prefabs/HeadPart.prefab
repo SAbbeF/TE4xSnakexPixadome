@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4938589253341278767}
+  - component: {fileID: 6898807712851248039}
   m_Layer: 0
   m_Name: HeadPart
   m_TagString: Untagged
@@ -28,9 +29,23 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 862655526375017342}
+  - {fileID: 6230402820714891161}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6898807712851248039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3550693070199185688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb53b88c40e00e74aaaca4fdb2aca52d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snakeHead: {fileID: 3550693070199185688}
 --- !u!1 &4233759037179369854
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,7 +57,6 @@ GameObject:
   - component: {fileID: 3232862986743626913}
   - component: {fileID: 4325367001099485769}
   - component: {fileID: 2332726082623478557}
-  - component: {fileID: 4850935730668918641}
   m_Layer: 0
   m_Name: EyeOne
   m_TagString: Untagged
@@ -113,18 +127,100 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4850935730668918641
+--- !u!1 &4363650483073084769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6230402820714891161}
+  - component: {fileID: 3669955762394357003}
+  - component: {fileID: 3912807336433429909}
+  - component: {fileID: 7128178204702271644}
+  m_Layer: 0
+  m_Name: MouthPiece
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6230402820714891161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363650483073084769}
+  m_LocalRotation: {x: -0, y: -0, z: -0.09174845, w: 0.99578226}
+  m_LocalPosition: {x: 5, y: -0.39, z: 0}
+  m_LocalScale: {x: 7.5486, y: 5, z: 7}
+  m_Children: []
+  m_Father: {fileID: 4938589253341278767}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -10.528}
+--- !u!33 &3669955762394357003
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363650483073084769}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3912807336433429909
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363650483073084769}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7128178204702271644
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4233759037179369854}
+  m_GameObject: {fileID: 4363650483073084769}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.7, z: 0.7}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4711249930817433153
 GameObject:
@@ -137,7 +233,6 @@ GameObject:
   - component: {fileID: 8400197070201315333}
   - component: {fileID: 6974846809476976262}
   - component: {fileID: 7398718913256776510}
-  - component: {fileID: 8378316334399648288}
   m_Layer: 0
   m_Name: EyeTwo
   m_TagString: Untagged
@@ -208,19 +303,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8378316334399648288
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4711249930817433153}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.7, z: 0.7}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7852735690516111259
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +317,7 @@ GameObject:
   - component: {fileID: 8798309732205322476}
   m_Layer: 0
   m_Name: HeadPiece
-  m_TagString: Untagged
+  m_TagString: SnakeHeadTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -248,7 +330,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7852735690516111259}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children:
   - {fileID: 3232862986743626913}
