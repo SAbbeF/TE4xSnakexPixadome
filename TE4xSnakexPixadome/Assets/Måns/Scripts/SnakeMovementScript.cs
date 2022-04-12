@@ -160,7 +160,7 @@ public class SnakeMovementScript : MonoBehaviour
     {
 
         
-        GameObject snakeTail = Instantiate(snakeTailPrefab);
+        GameObject snakeTail = Instantiate(this.snakeTailPrefab);
         snakeTail.transform.position = bodyparts[bodyparts.Count - 1].transform.position;
 
         bodyparts.Add(snakeTail);
