@@ -15,7 +15,7 @@ public class Teleporter : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Triggered");
-            player.transform.position = destination.position;
+            player.transform.position = destination.transform.position;
             //StartCoroutine(TeleportPlayer());
         }
             

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - TopDownWalls
   - LeftRightWalls
+  - Bomb
+  - Fruit
   layers:
   - Default
   - TransparentFX
