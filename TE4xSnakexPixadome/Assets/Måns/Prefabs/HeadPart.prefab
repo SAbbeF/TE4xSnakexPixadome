@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snakeHead: {fileID: 3550693070199185688}
+  snakeTailPrefab: {fileID: 4063918060901136556, guid: e1c23abd0210d7d4cbbc8a073123a201, type: 3}
 --- !u!1 &4233759037179369854
 GameObject:
   m_ObjectHideFlags: 0

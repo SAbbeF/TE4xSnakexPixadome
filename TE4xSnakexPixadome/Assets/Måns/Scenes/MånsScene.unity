@@ -198,6 +198,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6898807712851248039, guid: a07acd35d3e2cc04ba8cadad6a796e73, type: 3}
+      propertyPath: snakeTailPrefab
+      value: 
+      objectReference: {fileID: 4063918060901136556, guid: e1c23abd0210d7d4cbbc8a073123a201, type: 3}
     m_RemovedComponents:
     - {fileID: 4340002518993490203, guid: a07acd35d3e2cc04ba8cadad6a796e73, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a07acd35d3e2cc04ba8cadad6a796e73, type: 3}

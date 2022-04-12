@@ -7,18 +7,17 @@ using UnityEngine;
 public class SnakeMovementScript : MonoBehaviour
 {
     [SerializeField] GameObject snakeHead;
+    [SerializeField] GameObject snakeTailPrefab;
+    List<GameObject> bodyparts;
     int direction;
-    Vector3 oldPosition;
     float moveDistance;
     float moveTimer;
-    float RotationDegree;
     float time;
     
     public SnakeMovementScript()
     {
-        moveTimer = 1f;
+        moveTimer = 0.5f;
         moveDistance = 10f;
-        RotationDegree = 90f;
         
     }
 
@@ -26,18 +25,76 @@ public class SnakeMovementScript : MonoBehaviour
     void Start()
     {
         direction = 0;
-        
+        bodyparts = new List<GameObject>();
+        bodyparts.Add(snakeHead);
+        AddBodyPart();
+        AddBodyPart();
+        AddBodyPart();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        #region inputs
+        if (Input.GetKey(KeyCode.W))
+        {
+            direction = 1;
+            //RotateYPlus180();
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            direction = 2;
+            //RotateYPlus90();
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            direction = 3;
+            //Rotate0();
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            direction = 4;
+            //RotateYMinus90();
+        }
+        #endregion
+
         time = time + Time.deltaTime;
         if (time >= moveTimer)
         {
+            for (int i = bodyparts.Count - 1; i > 0; i--)
+            {
+                bodyparts[i].transform.position = bodyparts[i - 1].transform.position;
 
-            RotateYMinus();
-            time = 0f;
+            }
+            switch (direction)
+            {
+                case 1:
+                    MoveXMinus();
+                    break;
+
+                case 2:
+                    MoveZMinus();
+                    break;
+
+                case 3:
+                    MoveXPlus();
+                    break;
+
+                case 4:
+                    MoveZPlus();
+                    break;
+                
+                
+                default:
+                    break;
+            }
+            time = 0;
+
         }
 
     }
@@ -57,7 +114,7 @@ public class SnakeMovementScript : MonoBehaviour
 
 
     }
-    void MoveZplus()
+    void MoveZPlus()
     {
         snakeHead.transform.position = new Vector3
            (snakeHead.transform.position.x, snakeHead.transform.position.y, snakeHead.transform.position.z + moveDistance);
@@ -74,17 +131,39 @@ public class SnakeMovementScript : MonoBehaviour
 
     #region Rotation
 
-    void RotateYPlus()
+    void Rotate0()
     {
-        transform.Rotate(snakeHead.transform.rotation.x, snakeHead.transform.rotation.y + RotationDegree, snakeHead.transform.rotation.z);
+        transform.Rotate(snakeHead.transform.rotation.x, 0, snakeHead.transform.rotation.z);
 
     }
-    void RotateYMinus()
+    void RotateYPlus90()
     {
-        transform.Rotate(snakeHead.transform.rotation.x, snakeHead.transform.rotation.y - RotationDegree, snakeHead.transform.rotation.z);
+        transform.Rotate(snakeHead.transform.rotation.x, 90, snakeHead.transform.rotation.z);
+
+    }
+
+    void RotateYPlus180()
+    {
+        transform.Rotate(snakeHead.transform.rotation.x, 180, snakeHead.transform.rotation.z);
+
+    }
+
+    void RotateYMinus90()
+    {
+        transform.Rotate(snakeHead.transform.rotation.x, -90, snakeHead.transform.rotation.z);
 
     }
 
     #endregion
+
+    void AddBodyPart()
+    {
+
+        
+        GameObject snakeTail = Instantiate(snakeTailPrefab);
+        snakeTail.transform.position = bodyparts[bodyparts.Count - 1].transform.position;
+
+        bodyparts.Add(snakeTail);
+    }
 
 }
