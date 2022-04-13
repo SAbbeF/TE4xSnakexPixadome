@@ -99,7 +99,6 @@ public class SnakeMovementScript : MonoBehaviour
                     break;
             }
             time = 0;
-            
         }
 
     }
