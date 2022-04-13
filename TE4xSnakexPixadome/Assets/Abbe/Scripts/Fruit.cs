@@ -10,7 +10,7 @@ public class Fruit : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Destroy(this.gameObject);
-            Debug.Log("HMM");
+            Game.gameInstance.IncreaseScore();
         }
     }
 
