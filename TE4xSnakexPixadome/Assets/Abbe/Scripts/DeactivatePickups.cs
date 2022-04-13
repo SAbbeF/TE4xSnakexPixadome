@@ -7,7 +7,7 @@ public class DeactivatePickups : MonoBehaviour
     void Start()
     {
         //Invoke("Deactivate", Random.Range(3f, 6f));
-        Invoke("DestroyPickups", Random.Range(3f, 6f));
+        Invoke("DestroyPickups", Random.Range(5f, 6f));
     }
 
     private void Deactivate()

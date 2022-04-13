@@ -67,7 +67,6 @@ public class Spawner : MonoBehaviour
             currentFruitNumber++;
             Vector3 position = RandomPosition();
 
-            //fix angle of apple so it be showned to camera, quaternion.
             GameObject spawnFruit = Instantiate(fruit, position, Quaternion.Euler(0, 0, 90));
             spawnFruit.name = $"{fruit.name}_{currentFruitNumber}";
         }

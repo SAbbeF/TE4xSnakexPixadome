@@ -14,7 +14,7 @@ public class Teleporter : MonoBehaviour
     {
         if (other.CompareTag("SnakeHeadTag"))
         {
-            Debug.Log("Triggered");
+            //Debug.Log("Triggered");
             player.transform.position = destination.transform.position;
             //StartCoroutine(TeleportPlayer());
         }
