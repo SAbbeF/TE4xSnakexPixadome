@@ -6,7 +6,7 @@ public class Bomb : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("SnakeHeadTag"))
         {
             Debug.Log("Damaged");
             Destroy(other);

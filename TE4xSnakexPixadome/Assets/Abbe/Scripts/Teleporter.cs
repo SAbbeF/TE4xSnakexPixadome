@@ -12,7 +12,7 @@ public class Teleporter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("SnakeHeadTag"))
         {
             Debug.Log("Triggered");
             player.transform.position = destination.transform.position;
