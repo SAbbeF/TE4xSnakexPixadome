@@ -7,10 +7,14 @@ public class Game : MonoBehaviour
 {
     public static Game gameInstance;
 
+    [SerializeField]
+    private GameObject gameOver;
+
     private Text scoreText;
 
     private int scoreCount;
 
+    public bool isOver;
 
     private void Awake()
     {
@@ -20,6 +24,11 @@ public class Game : MonoBehaviour
     private void Start()
     {
         scoreText = GameObject.Find("Score").GetComponent<Text>();
+    }
+
+    private void Update()
+    {
+        GameOver();
     }
 
     void CreateInstance()
@@ -32,5 +41,14 @@ public class Game : MonoBehaviour
     {
         scoreCount++;
         scoreText.text = "Score: " + scoreCount;
+    }
+
+    public void GameOver()
+    {
+        if (SnakeMovementScript.snakeInstance.bodyparts.Count < 1)
+        {
+            gameOver.SetActive(true);
+            isOver = true;
+        }
     }
 }

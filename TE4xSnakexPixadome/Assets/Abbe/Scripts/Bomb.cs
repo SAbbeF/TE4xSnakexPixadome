@@ -8,8 +8,8 @@ public class Bomb : MonoBehaviour
     {
         if (other.CompareTag("SnakeHeadTag"))
         {
-            Debug.Log("Damaged");
-            Destroy(other);
+            SnakeMovementScript.snakeInstance.RemoveBodyPart();
+            Destroy(this.gameObject);
         }
     }
 }

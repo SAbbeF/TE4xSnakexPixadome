@@ -53,7 +53,6 @@ public class Spawner : MonoBehaviour
         {
             SpawnFruit();
             SpawnBomb();
-            SpawnBomb();
             currentTimeToSpawn = timeToSpawn;
         }
     }
@@ -62,11 +61,14 @@ public class Spawner : MonoBehaviour
     {
         if (currentFruitNumber < maxFruitNumber)
         {
+            if (Game.gameInstance.isOver == true)
+                return;
+
             currentFruitNumber++;
             Vector3 position = RandomPosition();
 
             //fix angle of apple so it be showned to camera, quaternion.
-            GameObject spawnFruit = Instantiate(fruit, position, Quaternion.identity);
+            GameObject spawnFruit = Instantiate(fruit, position, Quaternion.Euler(0, 0, 90));
             spawnFruit.name = $"{fruit.name}_{currentFruitNumber}";
         }
     }
@@ -75,10 +77,13 @@ public class Spawner : MonoBehaviour
     {
         if (currentBombNumber < maxBombNumber)
         {
+            if (Game.gameInstance.isOver == true)
+                return;
+
             currentBombNumber++;
             Vector3 position = RandomPosition();
 
-            GameObject spawnBomb = Instantiate(bomb, position, Quaternion.identity);
+            GameObject spawnBomb = Instantiate(bomb, position, Quaternion.Euler(0, -90, 0));
             spawnBomb.name = $"{bomb.name}_{currentBombNumber}";
         }
     }

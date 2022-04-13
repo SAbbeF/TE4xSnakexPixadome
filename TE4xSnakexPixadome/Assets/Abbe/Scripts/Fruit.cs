@@ -11,6 +11,7 @@ public class Fruit : MonoBehaviour
         {
             Destroy(this.gameObject);
             Game.gameInstance.IncreaseScore();
+            SnakeMovementScript.snakeInstance.AddBodyPart();
         }
     }
 

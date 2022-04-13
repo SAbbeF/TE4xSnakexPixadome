@@ -6,21 +6,26 @@ using UnityEngine;
 
 public class SnakeMovementScript : MonoBehaviour
 {
+    public static SnakeMovementScript snakeInstance;
+
     [SerializeField] GameObject snakeHead;
     [SerializeField] GameObject snakeTailPrefab;
-    List<GameObject> bodyparts;
+    public List<GameObject> bodyparts;
     int direction;
     float moveDistance;
     float moveTimer;
     float time;
-    
+
     public SnakeMovementScript()
     {
         moveTimer = 0.5f;
         moveDistance = 10f;
-        
-    }
 
+    }
+    private void Awake()
+    {
+        CreateInstance();
+    }
 
     void Start()
     {
@@ -89,8 +94,8 @@ public class SnakeMovementScript : MonoBehaviour
                 case 4:
                     MoveZPlus();
                     break;
-                
-                
+
+
                 default:
                     break;
             }
@@ -157,24 +162,30 @@ public class SnakeMovementScript : MonoBehaviour
 
     #endregion
 
-    void AddBodyPart()
+    public void AddBodyPart()
     {
 
-        
+
         GameObject snakeTail = Instantiate(this.snakeTailPrefab);
         snakeTail.transform.position = bodyparts[bodyparts.Count - 1].transform.position;
 
         bodyparts.Add(snakeTail);
     }
 
-    void RemoveBodyPart()
+    public void RemoveBodyPart()
     {
         GameObject snakePartToRemove;
         snakePartToRemove = bodyparts[bodyparts.Count - 1];
 
-        
+
         bodyparts.Remove(snakePartToRemove);
         Destroy(snakePartToRemove);
+    }
+
+    void CreateInstance()
+    {
+        if (snakeInstance == null)
+            snakeInstance = this;
     }
 
 }
