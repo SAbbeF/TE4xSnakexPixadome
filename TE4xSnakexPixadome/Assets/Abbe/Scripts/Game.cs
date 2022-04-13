@@ -7,6 +7,8 @@ public class Game : MonoBehaviour
 {
     public static Game gameInstance;
 
+    private SceneMenuManagerScript sceneMenuManager;
+
     [SerializeField]
     private GameObject gameOver;
 
@@ -16,6 +18,11 @@ public class Game : MonoBehaviour
 
     public bool isOver;
 
+    [SerializeField]
+    private float maxTime;
+
+    private float currentTime;
+
     private void Awake()
     {
         CreateInstance();
@@ -24,6 +31,10 @@ public class Game : MonoBehaviour
     private void Start()
     {
         scoreText = GameObject.Find("Score").GetComponent<Text>();
+        sceneMenuManager = GameObject.Find("SceneManager").GetComponent<SceneMenuManagerScript>();
+
+        currentTime = maxTime;
+        currentTime = 0;
     }
 
     private void Update()
@@ -49,6 +60,16 @@ public class Game : MonoBehaviour
         {
             gameOver.SetActive(true);
             isOver = true;
+
+            if (currentTime > 0)
+            {
+                currentTime -= Time.deltaTime;
+            }
+            else
+            {
+                sceneMenuManager.GoToMenu();
+                currentTime = maxTime;
+            }
         }
     }
 }

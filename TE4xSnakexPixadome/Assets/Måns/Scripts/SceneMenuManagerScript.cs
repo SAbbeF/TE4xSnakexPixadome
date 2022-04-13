@@ -20,6 +20,12 @@ public class SceneMenuManagerScript : MonoBehaviour
     }
 
 
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
+    }
+
+
     public void QuitGame()
     {
 
