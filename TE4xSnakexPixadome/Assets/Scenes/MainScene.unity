@@ -1754,6 +1754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOver: {fileID: 59000007}
   isOver: 0
+  maxTime: 5
 --- !u!4 &2104178457
 Transform:
   m_ObjectHideFlags: 0

@@ -15,8 +15,14 @@ public class SceneMenuManagerScript : MonoBehaviour
     public void LoadGame()
     {
 
-        SceneManager.LoadScene("MånsScene");
+        SceneManager.LoadScene("MainScene");
 
+    }
+
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
     }
 
 
