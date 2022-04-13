@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6259910812853809880}
   - component: {fileID: 7790997569155008028}
   - component: {fileID: 1171781246849556983}
-  - component: {fileID: -8360489397360805636}
   m_Layer: 0
   m_Name: BodyPart
   m_TagString: Untagged
@@ -96,17 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-8360489397360805636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4063918060901136556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a50c20ca780743e4da8cdba1f89d2cea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  snakeHeadToFollow: {fileID: 3550693070199185688, guid: a07acd35d3e2cc04ba8cadad6a796e73, type: 3}
-  snakeTailFollowing: {fileID: 4063918060901136556}
