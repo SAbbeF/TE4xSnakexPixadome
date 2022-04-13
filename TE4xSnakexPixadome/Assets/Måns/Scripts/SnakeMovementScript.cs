@@ -30,6 +30,7 @@ public class SnakeMovementScript : MonoBehaviour
         AddBodyPart();
         AddBodyPart();
         AddBodyPart();
+        RemoveBodyPart();
 
     }
 
@@ -164,6 +165,16 @@ public class SnakeMovementScript : MonoBehaviour
         snakeTail.transform.position = bodyparts[bodyparts.Count - 1].transform.position;
 
         bodyparts.Add(snakeTail);
+    }
+
+    void RemoveBodyPart()
+    {
+        GameObject snakePartToRemove;
+        snakePartToRemove = bodyparts[bodyparts.Count - 1];
+
+        
+        bodyparts.Remove(snakePartToRemove);
+        Destroy(snakePartToRemove);
     }
 
 }
