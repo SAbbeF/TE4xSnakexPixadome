@@ -8,6 +8,7 @@ TagManager:
   - LeftRightWalls
   - Bomb
   - Fruit
+  - SnakeHeadTag
   layers:
   - Default
   - TransparentFX
