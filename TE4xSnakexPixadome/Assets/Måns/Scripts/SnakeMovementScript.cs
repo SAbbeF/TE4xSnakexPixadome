@@ -35,7 +35,6 @@ public class SnakeMovementScript : MonoBehaviour
         AddBodyPart();
         AddBodyPart();
         AddBodyPart();
-        RemoveBodyPart();
 
     }
 
@@ -100,7 +99,7 @@ public class SnakeMovementScript : MonoBehaviour
                     break;
             }
             time = 0;
-
+            
         }
 
     }
@@ -187,5 +186,18 @@ public class SnakeMovementScript : MonoBehaviour
         if (snakeInstance == null)
             snakeInstance = this;
     }
+
+    void SnakeCollideOwnBody(Collision collision)
+    {
+        if (collision.gameObject.tag == "BodyPart")
+        {
+            bodyparts.Clear();
+
+
+        }
+        
+
+    }
+
 
 }

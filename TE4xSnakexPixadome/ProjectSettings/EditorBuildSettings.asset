@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/M\xE5ns/Scenes/MainMenuScene.unity"
     guid: 09a7fd4656b7ecc479d67a602e4dd11d
-  - enabled: 1
+  - enabled: 0
     path: "Assets/M\xE5ns/Scenes/M\xE5nsScene.unity"
     guid: d35134175df5f99449cccbbfe2f21247
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: 755217508b5ace8409d6ec60d645718d
   m_configObjects: {}
