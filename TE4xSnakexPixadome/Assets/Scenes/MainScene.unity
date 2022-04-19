@@ -345,9 +345,9 @@ MonoBehaviour:
   bomb: {fileID: 6162391268321677614, guid: 8623046327ede57479e6523730289fd9, type: 3}
   center: {x: 0, y: 0.4, z: 0}
   size: {x: 180, y: 0.1, z: 180}
-  maxFruitNumber: 15
-  maxBombNumber: 15
-  timeToSpawn: 2
+  maxFruitNumber: 200
+  maxBombNumber: 0
+  timeToSpawn: 3
 --- !u!4 &73258686
 Transform:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ public class SnakeMovementScript : MonoBehaviour
 
     public SnakeMovementScript()
     {
-        moveTimer = 0.5f;
+        moveTimer = 0.25f;
         moveDistance = 10f;
 
     }
@@ -32,9 +32,6 @@ public class SnakeMovementScript : MonoBehaviour
         direction = 0;
         bodyparts = new List<GameObject>();
         bodyparts.Add(snakeHead);
-        AddBodyPart();
-        AddBodyPart();
-        AddBodyPart();
 
     }
 
@@ -186,17 +183,26 @@ public class SnakeMovementScript : MonoBehaviour
             snakeInstance = this;
     }
 
-    void SnakeCollideOwnBody(Collision collision)
+    private void OnTriggerEnter(Collider other)
+        //Collide with own body function
     {
-        if (collision.gameObject.tag == "BodyPart")
+        if (other.gameObject.tag == "BodyPart")
         {
-            bodyparts.Clear();
+            if (other.gameObject != bodyparts[1])
+            {
+
+                for (int i = 0; i < bodyparts.Count; i++)
+                {
+                    Destroy(bodyparts[i]);
+
+                }
+
+                bodyparts.Clear();
+            }
 
 
         }
-        
 
     }
-
 
 }

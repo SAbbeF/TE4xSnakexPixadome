@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4938589253341278767}
-  - component: {fileID: 6898807712851248039}
   m_Layer: 0
   m_Name: HeadPart
   m_TagString: Untagged
@@ -32,21 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6898807712851248039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3550693070199185688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb53b88c40e00e74aaaca4fdb2aca52d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  snakeHead: {fileID: 3550693070199185688}
-  snakeTailPrefab: {fileID: 4063918060901136556, guid: e1c23abd0210d7d4cbbc8a073123a201, type: 3}
-  bodyparts: []
 --- !u!1 &4233759037179369854
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +206,7 @@ GameObject:
   - component: {fileID: 3463440110375171753}
   - component: {fileID: 8798309732205322476}
   - component: {fileID: 1107041778294560729}
+  - component: {fileID: 6129466579728959302}
   m_Layer: 0
   m_Name: HeadPiece
   m_TagString: SnakeHeadTag
@@ -302,7 +287,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7852735690516111259}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -323,3 +308,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &6129466579728959302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7852735690516111259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb53b88c40e00e74aaaca4fdb2aca52d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snakeHead: {fileID: 3550693070199185688}
+  snakeTailPrefab: {fileID: 4063918060901136556, guid: e1c23abd0210d7d4cbbc8a073123a201, type: 3}
+  bodyparts: []
