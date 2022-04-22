@@ -50,7 +50,7 @@ public class Game : MonoBehaviour
 
     public void IncreaseScore()
     {
-        scoreCount++;
+        scoreCount = SnakeMovementScript.snakeInstance.bodyparts.Count;
         scoreText.text = "Score: " + scoreCount;
     }
 
