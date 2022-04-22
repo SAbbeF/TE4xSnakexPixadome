@@ -226,16 +226,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73258684}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e005d27105fea44c9b7a55e3b9ac7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generator: {fileID: 143883838}
   fruit: {fileID: 8412357255496543786, guid: d7e5ddcd9818fe64b837cfc73893161e, type: 3}
   bomb: {fileID: 6162391268321677614, guid: 8623046327ede57479e6523730289fd9, type: 3}
+  trigger: {fileID: 3236819796110261334, guid: 3421361cb7dd80043949188ad3ac055a, type: 3}
   center: {x: 0, y: 0.4, z: 0}
   size: {x: 180, y: 0.1, z: 180}
-  maxFruitNumber: 200
+  maxFruitNumber: 300
   maxBombNumber: 0
   timeToSpawn: 3
 --- !u!4 &73258686
@@ -284,8 +286,9 @@ MonoBehaviour:
   platform: {fileID: 4585198333694109333, guid: 647f9c520a650a7439b21b438709c07b, type: 3}
   startPosition: {x: 0, y: 0, z: 0}
   spaceBetweenEachPlatform: 15
-  row: 8
-  column: 8
+  row: 3
+  column: 3
+  spawnableLocations: []
 --- !u!4 &143883839
 Transform:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ TagManager:
   - Fruit
   - SnakeHeadTag
   - BodyPart
+  - Platform
   layers:
   - Default
   - TransparentFX

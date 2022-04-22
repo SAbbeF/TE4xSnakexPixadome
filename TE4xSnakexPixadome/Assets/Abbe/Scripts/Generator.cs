@@ -14,15 +14,13 @@ public class Generator : MonoBehaviour
     private int spaceBetweenEachPlatform;
 
     [SerializeField]
-    private int row;
+    public int row;
 
     [SerializeField]
-    private int column;
+    public int column;
 
-    public Generator()
-    {
-
-    }
+    [SerializeField]
+    public List<Transform> spawnableLocations;
 
     private void Start()
     {
@@ -41,6 +39,7 @@ public class Generator : MonoBehaviour
                 spawnedPlatform.name = $"{platform.name}_{j}_{i}";
 
                 startPosition.x += spaceBetweenEachPlatform;
+                spawnableLocations.Add(spawnedPlatform.transform);
             }
 
             startPosition.x = tempPosition.x;

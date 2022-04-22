@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField]
+    private Generator generator;
+
+    CheckTrigger checkTrigger;
 
     [SerializeField]
     private GameObject fruit;
 
     [SerializeField]
     private GameObject bomb;
+
+    [SerializeField]
+    private GameObject trigger;
 
     [SerializeField]
     private Vector3 center;
@@ -32,10 +39,22 @@ public class Spawner : MonoBehaviour
 
     private float currentTimeToSpawn;
 
+    private List<Transform> usedLocations;
+
+    private int spawnLocationIndex;
+
+    int locationCounter;
+
+    Spawner()
+    {
+        usedLocations = new List<Transform>();
+    }
+
     private void Start()
     {
         currentTimeToSpawn = timeToSpawn;
         currentFruitNumber = 0;
+        locationCounter = 0;
     }
 
     private void Update()
@@ -64,11 +83,17 @@ public class Spawner : MonoBehaviour
             if (Game.gameInstance.isOver == true)
                 return;
 
-            currentFruitNumber++;
-            Vector3 position = RandomPosition();
+            Transform spawnpPosition = GetSpawnLocation();
 
-            GameObject spawnFruit = Instantiate(fruit, position, Quaternion.Euler(0, 0, 90));
-            spawnFruit.name = $"{fruit.name}_{currentFruitNumber}";
+            GameObject triggerTest = Instantiate(trigger, (spawnpPosition.position + new Vector3(0, 6, 0)), Quaternion.identity);
+
+            if (triggerTest.GetComponent<CheckTrigger>().Triggered == false)
+            {
+                //Destroy(triggerTest);
+                GameObject spawnFruit = Instantiate(fruit, (spawnpPosition.position + new Vector3(0, 3, 0)), Quaternion.identity);
+                spawnFruit.name = $"{fruit.name}_{currentFruitNumber}";
+                currentFruitNumber++;
+            }
         }
     }
 
@@ -80,9 +105,9 @@ public class Spawner : MonoBehaviour
                 return;
 
             currentBombNumber++;
-            Vector3 position = RandomPosition();
-
-            GameObject spawnBomb = Instantiate(bomb, position, Quaternion.Euler(0, -90, 0));
+            Transform spawnpPosition = GetSpawnLocation();
+            
+            GameObject spawnBomb = Instantiate(bomb, (spawnpPosition.position + new Vector3(0, 5, 0)), Quaternion.Euler(-90, 0, 0));
             spawnBomb.name = $"{bomb.name}_{currentBombNumber}";
         }
     }
@@ -96,6 +121,29 @@ public class Spawner : MonoBehaviour
 
         return position;
     }
+
+
+
+    public Transform GetSpawnLocation()
+    {
+        Transform spawnLocation = generator.spawnableLocations[Random.Range(1, (generator.column * generator.row))];
+        //spawnLocationIndex = (spawnLocationIndex + 1) % generator.spawnableLocations.Count;
+
+        if (usedLocations.Contains(spawnLocation) && locationCounter < (generator.column * generator.row))
+        {
+            GetSpawnLocation();
+        }
+        else if (usedLocations.Count >= (generator.column * generator.row))
+        {
+            currentBombNumber = maxBombNumber;
+            currentFruitNumber = maxFruitNumber;
+        }
+
+        locationCounter++;
+        usedLocations.Add(spawnLocation);
+        return spawnLocation;
+    }
+
 
     private void OnDrawGizmosSelected()
     {
