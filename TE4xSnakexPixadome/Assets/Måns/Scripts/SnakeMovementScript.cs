@@ -8,18 +8,36 @@ public class SnakeMovementScript : MonoBehaviour
 {
     public static SnakeMovementScript snakeInstance;
 
+
+
     [SerializeField] GameObject snakeHead;
     [SerializeField] GameObject snakeTailPrefab;
+    [SerializeField] GameObject foodToSpawn;
     public List<GameObject> bodyparts;
+    bool isOnCooldownBodyToFood;
+    bool isOnCooldownTimeStop;
     int direction;
+    int bodyPartsToFood;
+    int bodyPartsToSacrifice;
+    float coolDownReplaceBodyToFood;
+    float coolDownTimeStop;
     float moveDistance;
     float moveTimer;
     float time;
+    float timeSlowDuration;
+    float timeSlowProgress;
+    float coolDownTimeAbilityFood;
+    float coolDownTimeTimeAbility;
 
     public SnakeMovementScript()
     {
-        moveTimer = 0.25f;
+        moveTimer = 0.2f;
         moveDistance = 10f;
+        coolDownReplaceBodyToFood = 5f;
+        coolDownTimeStop = 10f;
+        bodyPartsToFood = 5;
+        bodyPartsToSacrifice = 2;
+        timeSlowDuration = 1.75f;
 
     }
     private void Awake()
@@ -32,37 +50,95 @@ public class SnakeMovementScript : MonoBehaviour
         direction = 0;
         bodyparts = new List<GameObject>();
         bodyparts.Add(snakeHead);
-
+        isOnCooldownBodyToFood = false;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        if (isOnCooldownBodyToFood == true)
+        {
+            coolDownTimeAbilityFood = coolDownTimeAbilityFood + Time.deltaTime;
+            if (coolDownTimeAbilityFood >= coolDownReplaceBodyToFood)
+            {
+                isOnCooldownBodyToFood = false;
+                coolDownTimeAbilityFood = 0;
+
+            }
+
+        }
+
+        if (isOnCooldownTimeStop == true)
+        {
+            coolDownTimeTimeAbility = coolDownTimeTimeAbility + Time.deltaTime;
+            if (coolDownTimeTimeAbility >= coolDownTimeStop)
+            {
+                isOnCooldownTimeStop = false;
+                coolDownTimeTimeAbility = 0;
+
+            }
+
+        }
+
+        if (Time.timeScale < 1f)
+        {
+            timeSlowProgress += Time.deltaTime;
+            if (timeSlowProgress > timeSlowDuration)
+            {
+
+                Time.timeScale = 1f;
+                timeSlowProgress = 0;
+            }
+
+
+        }
+
         #region inputs
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             direction = 1;
             //RotateYPlus180();
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             direction = 2;
             //RotateYPlus90();
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             direction = 3;
             //Rotate0();
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             direction = 4;
             //RotateYMinus90();
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isOnCooldownBodyToFood != true)
+            {
+
+                SnakeShorterner();
+                isOnCooldownBodyToFood = true;
+            }
+
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (isOnCooldownTimeStop != true)
+            {
+
+                SnakeTimePowers();
+                isOnCooldownTimeStop = true;
+            }
+
+        }
+
         #endregion
 
         time = time + Time.deltaTime;
@@ -184,7 +260,7 @@ public class SnakeMovementScript : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-        //Collide with own body function
+    //Collide with own body function
     {
         if (other.gameObject.tag == "BodyPart")
         {
@@ -205,4 +281,49 @@ public class SnakeMovementScript : MonoBehaviour
 
     }
 
+    void SnakeShorterner()
+    {
+
+
+
+        if ((bodyparts.Count - 1) >= 15)
+        {
+
+
+            for (int i = 0; i < bodyPartsToFood; i++)
+            {
+                GameObject food = Instantiate(foodToSpawn);
+                GameObject bodyPartToReplace = bodyparts[bodyparts.Count - 1];
+                food.transform.position = bodyPartToReplace.transform.position;
+                bodyparts.Remove(bodyPartToReplace);
+                Destroy(bodyPartToReplace);
+
+
+            }
+
+
+        }
+
+
+    }
+
+    void SnakeTimePowers()
+    {
+
+        if ((bodyparts.Count - 1) >= 10)
+        {
+            for (int i = 0; i < bodyPartsToSacrifice; i++)
+            {
+                GameObject bodyPartToDestroy = bodyparts[bodyparts.Count - 1 ];
+                bodyparts.Remove(bodyPartToDestroy);
+                Destroy(bodyPartToDestroy);
+            }
+                Time.timeScale = Time.timeScale / 3;
+
+
+        }
+
+
+
+    }
 }

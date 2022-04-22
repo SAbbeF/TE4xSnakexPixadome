@@ -322,4 +322,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snakeHead: {fileID: 3550693070199185688}
   snakeTailPrefab: {fileID: 4063918060901136556, guid: e1c23abd0210d7d4cbbc8a073123a201, type: 3}
+  foodToSpawn: {fileID: 8412357255496543786, guid: d7e5ddcd9818fe64b837cfc73893161e, type: 3}
   bodyparts: []
